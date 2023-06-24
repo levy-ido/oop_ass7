@@ -1,17 +1,12 @@
 import java.util.regex.Pattern;
-
-public abstract class MatcherTemplate implements Matcher {
+public abstract class Prototype implements Matcher {
     private final java.util.regex.Matcher delegate;
-    public MatcherTemplate(String regex, String input) {
-        Pattern pattern = Pattern.compile(regex);
-        delegate = pattern.matcher(input);
+    public Prototype(String regex, String input) {
+        delegate = Pattern.compile(regex).matcher(input);
     }
     @Override
     public boolean find() {
         return delegate.find();
-    }
-    public java.util.regex.Matcher getDelegate() {
-        return delegate;
     }
     @Override
     public int start() {
@@ -20,5 +15,8 @@ public abstract class MatcherTemplate implements Matcher {
     @Override
     public int end() {
         return delegate.end();
+    }
+    public String group(int group) {
+        return delegate.group(group);
     }
 }

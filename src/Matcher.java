@@ -1,7 +1,9 @@
+import java.util.List;
+
 public interface Matcher {
     boolean find();
-    public String hypernym();
-    public String hyponym();
     public int start();
     public int end();
+    public List<String> hyponyms();
+    public String hypernym();
 }
