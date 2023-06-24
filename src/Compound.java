@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
 public class Compound implements Matcher {
-    private final String input;
     private final Type1 type1;
+    private final String input;
     private final String repeating;
     private final String additional;
     private List<String> hyponyms;
     private int end;
     public Compound(String regex, String input, String repeating, String additional) {
-        this.input = input;
         type1 = new Type1(regex, input);
+        this.input = input;
         this.repeating = repeating;
         this.additional = additional;
     }
@@ -25,11 +25,11 @@ public class Compound implements Matcher {
         if (repeating.find()) {
             hyponyms.addAll(repeating.hyponyms());
             end = repeating.end();
-            Type3 additional = new Type3(this.additional, input.substring(end), end);
-            if (additional.find()) {
-                hyponyms.addAll(additional.hyponyms());
-                end = additional.end();
-            }
+        }
+        Type3 additional = new Type3(this.additional, input.substring(end), end);
+        if (additional.find()) {
+            hyponyms.addAll(additional.hyponyms());
+            end = additional.end();
         }
         return true;
     }
