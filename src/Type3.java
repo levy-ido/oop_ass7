@@ -1,6 +1,17 @@
 import java.util.List;
+/**
+ * This class assumes a previous match with an instance of Type1 or Type2, and tries to find a match starting at the
+ * previous match's end index.
+ */
 public class Type3 extends Prototype {
     private final int start;
+    /**
+     * Constructs a new Type3 with the given regular expression, the previous match's end index and the substring of the
+     * original string starting at that index.
+     * @param regex (String) A regular expression to find matches with.
+     * @param substring (String) The substring of the original string starting at the index denoted by start.
+     * @param start (int) The previous match's end index.
+     */
     public Type3(String regex, String substring, int start) {
         super(regex, substring);
         this.start = start;

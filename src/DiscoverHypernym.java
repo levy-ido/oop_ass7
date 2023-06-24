@@ -1,12 +1,13 @@
 import java.io.File;
 
 /**
- * .
+ * The final flick of a finger in this assignment.
  */
 public class DiscoverHypernym {
     /**
-     * .
-     * @param args .
+     * The entry point of the program.
+     * @param args (String[]) The program expects two arguments. The first, a path to a directory holding a corpus of
+     * data to read. The second, a lemma to search hypernyms for.
      */
     public static void main(String[] args) {
         File[] files = new File(args[0]).listFiles();

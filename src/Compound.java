@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * This class is used for identifying the first four Hearst patterns. To that end, it combines Type1, Repeating and
+ * Type3 to create a composition of regular expressions not achievable by regular means. First, it tries to match with
+ * Type1 once, then with Repeating as much as possible and finally attempts to match with Type3 once.
+ */
 public class Compound implements Matcher {
     private final Type1 type1;
     private final String input;
@@ -7,6 +12,14 @@ public class Compound implements Matcher {
     private final String additional;
     private List<String> hyponyms;
     private int end;
+    /**
+     * Constructs a new Compound with the given regular expression, input string, repeating regular expression and an
+     * additional regular expression.
+     * @param regex (String) A regular expression to find matches with.
+     * @param input (String) The input string to search for matches.
+     * @param repeating (String) A regular expression that will be used to create a Repeating.
+     * @param additional (String) A regular expression that will be used to create a Type3.
+     */
     public Compound(String regex, String input, String repeating, String additional) {
         type1 = new Type1(regex, input);
         this.input = input;

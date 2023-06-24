@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * This class behaves similarly to Type3, only it tries to concatenate multiple matches instead of just one.
+ */
 public class Repeating implements Matcher {
     private final String regex;
     private String substring;
@@ -7,6 +10,12 @@ public class Repeating implements Matcher {
     private final int start;
     private int end;
     private final List<String> hyponyms;
+    /**
+     * Constructs a new Repeating with the given regular expression, substring and start index.
+     * @param regex (String) A regular expression to find matches with.
+     * @param substring (String) The substring of the original string starting at the index denoted by start.
+     * @param start (int) The previous match's end index.
+     */
     public Repeating(String regex, String substring, int start) {
         this.regex = regex;
         this.substring = substring;
