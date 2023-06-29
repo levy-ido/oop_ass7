@@ -67,11 +67,15 @@ public class HypernymMap {
         if (!count(files)) {
             return false;
         }
-        List<Map.Entry<String, Integer>> entries = new ArrayList<>(map.entrySet());
-        Comparator<Map.Entry<String, Integer>> cmp = Map.Entry.comparingByValue();
-        entries.sort(cmp.reversed());
-        for (Map.Entry<String, Integer> entry : entries) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+        if (map.isEmpty()) {
+            System.out.println("The lemma doesn't appear in the corpus.");
+        } else {
+            List<Map.Entry<String, Integer>> entries = new ArrayList<>(map.entrySet());
+            Comparator<Map.Entry<String, Integer>> cmp = Map.Entry.comparingByValue();
+            entries.sort(cmp.reversed());
+            for (Map.Entry<String, Integer> entry : entries) {
+                System.out.println(entry.getKey() + ": (" + entry.getValue() + ")");
+            }
         }
         return true;
     }
